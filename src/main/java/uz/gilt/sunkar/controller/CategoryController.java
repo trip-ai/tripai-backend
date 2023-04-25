@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uz.gilt.sunkar.entity.Category;
-import uz.gilt.sunkar.repository.CategoryRepository;
 import uz.gilt.sunkar.service.BaseService;
 import uz.gilt.sunkar.service.CategoryService;
 
