@@ -6,27 +6,27 @@ import uz.gilt.sunkar.service.BaseService;
 import java.util.List;
 
 @RestController
-public abstract class BaseController<T> {
+public abstract class BaseController<T, D> {
 
-    protected abstract BaseService<T> getService();
+    protected abstract BaseService<T, D> getService();
 
     @GetMapping
-    public List<T> getAll(){
+    public List<D> getAll(){
         return getService().getAll();
     }
 
     @GetMapping("{id}")
-    public T getAll(@PathVariable("id") long id){
+    public D getAll(@PathVariable("id") long id){
         return getService().getById(id);
     }
 
     @PostMapping
-    public T create(@RequestBody T obj){
+    public D create(@RequestBody D obj){
         return getService().create(obj);
     }
 
     @PutMapping("{id}")
-    public T update(@PathVariable("id") long id, @RequestBody T obj){
+    public D update(@PathVariable("id") long id, @RequestBody D obj){
         return getService().updateById(id, obj);
     }
 

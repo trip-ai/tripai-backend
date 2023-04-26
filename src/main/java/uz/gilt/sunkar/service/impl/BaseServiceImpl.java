@@ -4,38 +4,44 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+import uz.gilt.sunkar.entity.BaseEntity;
+import uz.gilt.sunkar.mapper.BaseMapper;
 import uz.gilt.sunkar.service.BaseService;
 
 import java.util.List;
 
 @Service
-public abstract class BaseServiceImpl<T, R extends JpaRepository<T, Long>> implements BaseService<T> {
+public abstract class BaseServiceImpl<T extends BaseEntity, D extends Record, R extends JpaRepository<T, Long>, M extends BaseMapper<T, D>> implements BaseService<T, D> {
     private final R repository;
+    private final M mapper;
 
-    public BaseServiceImpl(R repository) {
+    public BaseServiceImpl(R repository, M mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
-    public List<T> getAll() {
-        return repository.findAll();
+    public List<D> getAll() {
+        return mapper.toDtoList(repository.findAll());
     }
 
     @Override
-    public T getById(long id) {
-        return repository.findById(id).orElseThrow(EntityNotFoundException::new);
+    public D getById(long id) {
+        return mapper.toDto(repository.findById(id).orElseThrow(EntityNotFoundException::new));
     }
 
     @Override
-    public T create(T entity) {
-        return repository.save(entity);
+    public D create(D dto) {
+        T entity = mapper.toEntity(dto);
+        return mapper.toDto(repository.save(entity));
     }
 
     @Override
-    public T updateById(long id, T entity) {
+    public D updateById(long id, D dto) {
         T existingEntity = repository.findById(id).orElseThrow(EntityNotFoundException::new);
-        BeanUtils.copyProperties(entity, existingEntity);
-        return repository.save(existingEntity);
+        T entity = mapper.toEntity(dto);
+        BeanUtils.copyProperties(entity, existingEntity, "id", "createdAt", "updatedAt");
+        return mapper.toDto(repository.save(existingEntity));
     }
 
     @Override
