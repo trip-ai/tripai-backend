@@ -31,20 +31,6 @@ public abstract class BaseServiceImpl<T extends BaseEntity, D extends Record, R 
     }
 
     @Override
-    public D create(D dto) {
-        T entity = mapper.toEntity(dto);
-        return mapper.toDto(repository.save(entity));
-    }
-
-    @Override
-    public D updateById(long id, D dto) {
-        T existingEntity = repository.findById(id).orElseThrow(EntityNotFoundException::new);
-        T entity = mapper.toEntity(dto);
-        BeanUtils.copyProperties(entity, existingEntity, "id", "createdAt", "updatedAt");
-        return mapper.toDto(repository.save(existingEntity));
-    }
-
-    @Override
     public void deleteById(long id) {
         repository.deleteById(id);
     }

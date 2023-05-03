@@ -20,16 +20,6 @@ public abstract class BaseController<T, D> {
         return getService().getById(id);
     }
 
-    @PostMapping
-    public D create(@RequestBody D obj){
-        return getService().create(obj);
-    }
-
-    @PutMapping("{id}")
-    public D update(@PathVariable("id") long id, @RequestBody D obj){
-        return getService().updateById(id, obj);
-    }
-
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") long id){
         getService().deleteById(id);
