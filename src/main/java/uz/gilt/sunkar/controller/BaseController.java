@@ -1,5 +1,6 @@
 package uz.gilt.sunkar.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uz.gilt.sunkar.service.BaseService;
 
@@ -11,17 +12,18 @@ public abstract class BaseController<T, D> {
     protected abstract BaseService<T, D> getService();
 
     @GetMapping
-    public List<D> getAll(){
-        return getService().getAll();
+    public ResponseEntity<List<D>> getAll(){
+        return ResponseEntity.ok(getService().getAll());
     }
 
     @GetMapping("{id}")
-    public D getAll(@PathVariable("id") long id){
-        return getService().getById(id);
+    public ResponseEntity<D> getAll(@PathVariable("id") long id){
+        return ResponseEntity.ok(getService().getById(id));
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") long id){
+    public ResponseEntity<Void> delete(@PathVariable("id") long id){
         getService().deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

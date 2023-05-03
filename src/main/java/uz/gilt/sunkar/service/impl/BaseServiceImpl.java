@@ -3,7 +3,9 @@ package uz.gilt.sunkar.service.impl;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import uz.gilt.sunkar.entity.BaseEntity;
 import uz.gilt.sunkar.mapper.BaseMapper;
 import uz.gilt.sunkar.service.BaseService;
@@ -27,11 +29,15 @@ public abstract class BaseServiceImpl<T extends BaseEntity, D extends Record, R 
 
     @Override
     public D getById(long id) {
-        return mapper.toDto(repository.findById(id).orElseThrow(EntityNotFoundException::new));
+        return mapper.toDto(findById(id));
     }
-
     @Override
     public void deleteById(long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public T findById(long id) {
+        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Resource not found (id: %d)", id)));
     }
 }

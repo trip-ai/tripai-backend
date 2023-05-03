@@ -1,6 +1,8 @@
 package uz.gilt.sunkar.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uz.gilt.sunkar.dto.request.CategoryRequest;
 import uz.gilt.sunkar.dto.CategoryDto;
@@ -19,12 +21,12 @@ public class CategoryController extends BaseController<Category, CategoryDto>{
     }
 
     @PostMapping
-    public CategoryDto create(@RequestBody CategoryRequest obj){
-        return service.create(obj);
+    public ResponseEntity<CategoryDto> create(@RequestBody CategoryRequest obj){
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(obj));
     }
 
     @PutMapping("{id}")
-    public CategoryDto update(@PathVariable("id") long id, @RequestBody CategoryRequest obj){
-        return service.updateById(id, obj);
+    public ResponseEntity<CategoryDto> update(@PathVariable("id") long id, @RequestBody CategoryRequest obj){
+        return ResponseEntity.ok(service.updateById(id, obj));
     }
 }

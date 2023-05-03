@@ -36,7 +36,7 @@ public class SubcategoryServiceImpl extends BaseServiceImpl<Subcategory, Subcate
 
     @Override
     public SubcategoryDto updateById(long id, SubcategoryRequest obj) {
-        Subcategory existingEntity = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+        Subcategory existingEntity = findById(id);
         Subcategory entity = mapper.toEntity(obj);
         BeanUtils.copyProperties(entity, existingEntity, "id", "createdAt", "updatedAt");
         return mapper.toDto(repository.save(existingEntity));

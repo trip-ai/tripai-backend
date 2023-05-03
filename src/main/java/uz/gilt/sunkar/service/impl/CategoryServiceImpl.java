@@ -30,14 +30,9 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category, CategoryDto, 
 
     @Override
     public CategoryDto updateById(long id, CategoryRequest obj) {
-        Category existingEntity = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+        Category existingEntity = findById(id);
         Category entity = mapper.toEntity(obj);
         BeanUtils.copyProperties(entity, existingEntity, "id", "createdAt", "updatedAt");
         return mapper.toDto(repository.save(existingEntity));
-    }
-
-    @Override
-    public Category findById(long id) {
-        return repository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 }

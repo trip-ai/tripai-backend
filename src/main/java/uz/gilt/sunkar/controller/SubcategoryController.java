@@ -1,6 +1,8 @@
 package uz.gilt.sunkar.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uz.gilt.sunkar.dto.CategoryDto;
 import uz.gilt.sunkar.dto.SubcategoryDto;
@@ -23,12 +25,12 @@ public class SubcategoryController extends BaseController<Subcategory, Subcatego
     }
 
     @PostMapping
-    public SubcategoryDto create(@RequestBody SubcategoryRequest obj){
-        return service.create(obj);
+    public ResponseEntity<SubcategoryDto> create(@RequestBody SubcategoryRequest obj){
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(obj));
     }
 
     @PutMapping("{id}")
-    public SubcategoryDto update(@PathVariable("id") long id, @RequestBody SubcategoryRequest obj){
-        return service.updateById(id, obj);
+    public ResponseEntity<SubcategoryDto> update(@PathVariable("id") long id, @RequestBody SubcategoryRequest obj){
+        return ResponseEntity.ok(service.updateById(id, obj));
     }
 }
