@@ -13,7 +13,6 @@ import java.io.Serializable;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
-import java.security.SignatureException;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.HashMap;
@@ -26,7 +25,7 @@ public class JwtUtils implements Serializable {
     private final Key key;
     public JwtUtils(@Value("${jwt.validity-ms}") long jwtValidityMs,
                     @Value("${jwt.secret-key}") String secretKey,
-                    @Value("${jwt.secret-data}") String secretData) throws SignatureException, NoSuchAlgorithmException, InvalidKeyException {
+                    @Value("${jwt.secret-data}") String secretData) throws NoSuchAlgorithmException, InvalidKeyException {
         this.jwtValidityMs = jwtValidityMs;
         this.key = Keys.hmacShaKeyFor(calculateHMAC(secretData, secretKey).getBytes());
 
@@ -74,7 +73,7 @@ public class JwtUtils implements Serializable {
         return formatter.toString();
     }
 
-    private String calculateHMAC(String data, String key) throws SignatureException, NoSuchAlgorithmException, InvalidKeyException
+    private String calculateHMAC(String data, String key) throws NoSuchAlgorithmException, InvalidKeyException
     {
         String HMAC_SHA512 = "HmacSHA512";
         SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(), HMAC_SHA512);
