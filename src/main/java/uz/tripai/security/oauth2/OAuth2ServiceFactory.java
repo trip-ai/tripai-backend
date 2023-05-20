@@ -1,4 +1,4 @@
-package uz.tripai.security.service.oauth2;
+package uz.tripai.security.oauth2;
 
 import com.github.scribejava.core.oauth.OAuth20Service;
 import org.springframework.http.HttpStatus;

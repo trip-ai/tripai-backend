@@ -4,11 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uz.tripai.dto.response.JwtResponse;
 import uz.tripai.entity.User;
-import uz.tripai.security.impl.UserDetailsImpl;
+import uz.tripai.security.service.impl.UserDetailsImpl;
 import uz.tripai.security.jwt.JwtUtils;
-import uz.tripai.security.service.oauth2.EProvider;
-import uz.tripai.security.service.oauth2.UserInfoAccessService;
-import uz.tripai.security.service.oauth2.user.OAuth2UserInfo;
+import uz.tripai.security.oauth2.EProvider;
+import uz.tripai.security.oauth2.UserInfoAccessService;
+import uz.tripai.security.oauth2.user.OAuth2UserInfo;
 import uz.tripai.service.AuthService;
 import uz.tripai.service.UserService;
 

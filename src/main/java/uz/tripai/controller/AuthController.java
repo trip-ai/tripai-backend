@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uz.tripai.dto.response.JwtResponse;
-import uz.tripai.security.service.oauth2.EProvider;
+import uz.tripai.security.oauth2.EProvider;
 import uz.tripai.service.AuthService;
 
 @RestController

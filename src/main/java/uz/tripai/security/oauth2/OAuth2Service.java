@@ -1,4 +1,4 @@
-package uz.tripai.security.service.oauth2;
+package uz.tripai.security.oauth2;
 
 import com.github.scribejava.apis.GoogleApi20;
 import com.github.scribejava.core.builder.ServiceBuilder;
@@ -8,6 +8,8 @@ public class OAuth2Service {
     public static OAuth20Service google(String clientId, String apiSecret) {
         return new ServiceBuilder(clientId)
                 .apiSecret(apiSecret)
+                .defaultScope("profile")
+                .callback("https://tripai.uz")
                 .build(GoogleApi20.instance());
     }
 

@@ -1,12 +1,9 @@
 package uz.tripai.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
-import uz.tripai.security.service.oauth2.EProvider;
+import uz.tripai.security.oauth2.EProvider;
 
-import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,5 +24,5 @@ public class User extends BaseEntity {
     @JoinTable(	name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> roles;
+    private Set<Role> roles;
 }

@@ -1,4 +1,4 @@
-package uz.tripai.security.impl;
+package uz.tripai.security.service.impl;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

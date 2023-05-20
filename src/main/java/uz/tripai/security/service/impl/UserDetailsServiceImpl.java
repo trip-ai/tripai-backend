@@ -1,4 +1,4 @@
-package uz.tripai.security.impl;
+package uz.tripai.security.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

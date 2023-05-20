@@ -1,8 +1,8 @@
-package uz.tripai.security.service.oauth2.user;
+package uz.tripai.security.oauth2.user;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
-import uz.tripai.security.service.oauth2.EProvider;
+import uz.tripai.security.oauth2.EProvider;
 
 import java.util.Map;
 

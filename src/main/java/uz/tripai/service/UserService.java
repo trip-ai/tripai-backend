@@ -1,8 +1,8 @@
 package uz.tripai.service;
 
 import uz.tripai.entity.User;
-import uz.tripai.security.service.oauth2.EProvider;
-import uz.tripai.security.service.oauth2.user.OAuth2UserInfo;
+import uz.tripai.security.oauth2.EProvider;
+import uz.tripai.security.oauth2.user.OAuth2UserInfo;
 
 public interface UserService {
     User getUserByProviderId(String providerId);

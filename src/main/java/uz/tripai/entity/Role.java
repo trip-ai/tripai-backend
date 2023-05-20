@@ -1,12 +1,12 @@
 package uz.tripai.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import lombok.*;
 import uz.tripai.entity.enumerate.ERole;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 
 @Entity
 @Table(name = "`role`")

@@ -1,4 +1,4 @@
-package uz.tripai.security.service.oauth2;
+package uz.tripai.security.oauth2;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.core.model.*;
@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
-import uz.tripai.security.service.oauth2.user.OAuth2UserInfo;
-import uz.tripai.security.service.oauth2.user.OAuth2UserInfoFactory;
+import uz.tripai.security.oauth2.user.OAuth2UserInfo;
+import uz.tripai.security.oauth2.user.OAuth2UserInfoFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -39,7 +39,6 @@ public class UserInfoAccessService {
         try {
             accessToken = oAuth20Service.getAccessToken(code);
         } catch (IOException | ExecutionException | InterruptedException | OAuth2AccessTokenErrorResponse e) {
-            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, e.getMessage());
         }
         if (accessToken == null){
@@ -51,7 +50,6 @@ public class UserInfoAccessService {
             Map<String, Object> map = new ObjectMapper().readValue(response.getBody(), HashMap.class);
             return OAuth2UserInfoFactory.getOAuth2UserInfo(provider, map);
         } catch (IOException | ExecutionException | InterruptedException e) {
-            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, e.getMessage());
         }
 

@@ -1,4 +1,4 @@
-package uz.tripai.security.service.oauth2.user;
+package uz.tripai.security.oauth2.user;
 
 import java.util.Map;
 
