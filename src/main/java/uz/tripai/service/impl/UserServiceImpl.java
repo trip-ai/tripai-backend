@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
                 .build());
         user.setEmail(userInfo.getEmail());
         user.setName(userInfo.getName());
+        user.setImageUrl(userInfo.getImageUrl());
         return repository.save(user);
     }
 
@@ -42,10 +43,13 @@ public class UserServiceImpl implements UserService {
     public User getOrCreate(UserRequest request) {
         User user = repository.findByProviderId(request.providerId()).orElse(new User());
         user.setName(user.getName());
-        user.setProvider(request.provider());
         user.setProviderId(request.providerId());
         user.setEmail(request.email());
-        user.setRoles(Set.of(roleService.getRole(ERole.ROLE_USER)));
+        user.setImageUrl(request.imageUrl());
+        if (user.getId() == null) {
+            user.setRoles(Set.of(roleService.getRole(ERole.ROLE_USER)));
+            user.setProvider(request.provider());
+        }
         return repository.save(user);
     }
 }
