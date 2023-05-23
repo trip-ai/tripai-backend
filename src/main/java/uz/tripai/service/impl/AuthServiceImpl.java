@@ -2,6 +2,7 @@ package uz.tripai.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import uz.tripai.dto.request.UserRequest;
 import uz.tripai.dto.response.JwtResponse;
 import uz.tripai.entity.User;
 import uz.tripai.security.service.impl.UserDetailsImpl;
@@ -22,6 +23,14 @@ public class AuthServiceImpl implements AuthService {
     public JwtResponse authenticate(EProvider provider, String code) {
         OAuth2UserInfo userInfo = UserInfoAccessService.getUserInfo(provider, code);
         User user = userService.createOrUpdate(provider, userInfo);
+        UserDetailsImpl userDetails = UserDetailsImpl.build(user);
+        String jwt = jwtUtils.generateToken(userDetails);
+        return new JwtResponse(jwt, user.getProviderId(), user.getRoles());
+    }
+
+    @Override
+    public JwtResponse signIn(UserRequest request) {
+        User user = userService.getOrCreate(request);
         UserDetailsImpl userDetails = UserDetailsImpl.build(user);
         String jwt = jwtUtils.generateToken(userDetails);
         return new JwtResponse(jwt, user.getProviderId(), user.getRoles());

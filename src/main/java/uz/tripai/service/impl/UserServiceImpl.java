@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import uz.tripai.dto.request.UserRequest;
 import uz.tripai.entity.User;
 import uz.tripai.entity.enumerate.ERole;
 import uz.tripai.repository.UserRepository;
@@ -34,6 +35,17 @@ public class UserServiceImpl implements UserService {
                 .build());
         user.setEmail(userInfo.getEmail());
         user.setName(userInfo.getName());
+        return repository.save(user);
+    }
+
+    @Override
+    public User getOrCreate(UserRequest request) {
+        User user = repository.findByProviderId(request.providerId()).orElse(new User());
+        user.setName(user.getName());
+        user.setProvider(request.provider());
+        user.setProviderId(request.providerId());
+        user.setEmail(request.email());
+        user.setRoles(Set.of(roleService.getRole(ERole.ROLE_USER)));
         return repository.save(user);
     }
 }

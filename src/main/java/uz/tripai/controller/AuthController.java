@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import uz.tripai.dto.request.UserRequest;
 import uz.tripai.dto.response.JwtResponse;
 import uz.tripai.security.oauth2.EProvider;
 import uz.tripai.service.AuthService;
@@ -28,5 +29,10 @@ public class AuthController {
                     required = true)
             @PathVariable("provider") EProvider provider, @RequestParam("code") String code) {
         return ResponseEntity.ok(authService.authenticate(provider, code));
+    }
+
+    @PostMapping("/sign-in")
+    public ResponseEntity<JwtResponse> signIn(@RequestBody UserRequest request){
+        return ResponseEntity.ok(authService.signIn(request));
     }
 }
