@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Type;
 
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -34,8 +34,8 @@ public class Place extends BaseEntity {
     @NoArgsConstructor
     public static class Workday {
         int dayOfWeek;
-        Time from;
-        Time to;
+        LocalTime from;
+        LocalTime to;
     }
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
