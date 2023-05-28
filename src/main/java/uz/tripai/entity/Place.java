@@ -7,6 +7,7 @@ import org.hibernate.annotations.Type;
 
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "place")
@@ -54,4 +55,9 @@ public class Place extends BaseEntity {
     private List<Workday> workdays;
     private boolean status;
     private double rating;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "place_tag",
+            joinColumns = @JoinColumn(name = "place_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private Set<Tag> tags;
 }
