@@ -52,4 +52,9 @@ public class UserServiceImpl implements UserService {
         }
         return repository.save(user);
     }
+
+    @Override
+    public User findById(long id) {
+        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Resource not found (id: %d)", id)));
+    }
 }

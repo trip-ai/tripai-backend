@@ -31,6 +31,7 @@ public class WebSecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/category/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/place/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/tag/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/itinerary/**").permitAll()
                         .anyRequest().authenticated());
         http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
         http.headers().frameOptions().disable();
