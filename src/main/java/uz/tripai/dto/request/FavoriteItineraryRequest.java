@@ -1,8 +1,8 @@
 package uz.tripai.dto.request;
 
-public record ItineraryRequest(
+public record FavoriteItineraryRequest(
         long userId,
-        boolean isPublic,
+        long itineraryId,
         boolean status
 ) {
 }

@@ -2,11 +2,8 @@ package uz.tripai.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import uz.tripai.dto.CategoryDto;
 import uz.tripai.dto.PlaceDto;
-import uz.tripai.dto.request.CategoryRequest;
 import uz.tripai.dto.request.PlaceRequest;
-import uz.tripai.entity.Category;
 import uz.tripai.entity.Place;
 import uz.tripai.service.CategoryService;
 

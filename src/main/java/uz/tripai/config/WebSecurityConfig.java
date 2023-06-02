@@ -34,6 +34,7 @@ public class WebSecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/itinerary/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/feedback/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/favorite-place/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/favorite-itinerary/**").permitAll()
                         .anyRequest().authenticated());
         http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
         http.headers().frameOptions().disable();

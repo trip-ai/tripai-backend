@@ -4,14 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uz.tripai.dto.CategoryDto;
 import uz.tripai.dto.PlaceDto;
-import uz.tripai.dto.request.CategoryRequest;
 import uz.tripai.dto.request.PlaceRequest;
-import uz.tripai.entity.Category;
 import uz.tripai.entity.Place;
 import uz.tripai.service.BaseService;
-import uz.tripai.service.CategoryService;
 import uz.tripai.service.PlaceService;
 
 @RestController

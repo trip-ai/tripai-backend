@@ -1,7 +1,6 @@
 package uz.tripai.service;
 
 import uz.tripai.dto.request.UserRequest;
-import uz.tripai.entity.Category;
 import uz.tripai.entity.User;
 import uz.tripai.security.oauth2.EProvider;
 import uz.tripai.security.oauth2.user.OAuth2UserInfo;

@@ -4,9 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import uz.tripai.service.BaseService;
 import uz.tripai.entity.BaseEntity;
 import uz.tripai.mapper.BaseMapper;
+import uz.tripai.service.BaseService;
 
 import java.util.List;
 

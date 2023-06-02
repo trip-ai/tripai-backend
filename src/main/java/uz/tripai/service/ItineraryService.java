@@ -1,10 +1,7 @@
 package uz.tripai.service;
 
-import uz.tripai.dto.CategoryDto;
 import uz.tripai.dto.ItineraryDto;
-import uz.tripai.dto.request.CategoryRequest;
 import uz.tripai.dto.request.ItineraryRequest;
-import uz.tripai.entity.Category;
 import uz.tripai.entity.Itinerary;
 
 public interface ItineraryService extends BaseService<Itinerary, ItineraryDto> {

@@ -3,11 +3,8 @@ package uz.tripai.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import uz.tripai.dto.FeedbackDto;
-import uz.tripai.dto.ItineraryDto;
 import uz.tripai.dto.request.FeedbackRequest;
-import uz.tripai.dto.request.ItineraryRequest;
 import uz.tripai.entity.Feedback;
-import uz.tripai.entity.Itinerary;
 import uz.tripai.service.PlaceService;
 import uz.tripai.service.UserService;
 

@@ -3,17 +3,11 @@ package uz.tripai.service.impl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uz.tripai.dto.PlaceDto;
 import uz.tripai.dto.TagDto;
-import uz.tripai.dto.request.PlaceRequest;
 import uz.tripai.dto.request.TagRequest;
-import uz.tripai.entity.Place;
 import uz.tripai.entity.Tag;
-import uz.tripai.mapper.PlaceMapper;
 import uz.tripai.mapper.TagMapper;
-import uz.tripai.repository.PlaceRepository;
 import uz.tripai.repository.TagRepository;
-import uz.tripai.service.PlaceService;
 import uz.tripai.service.TagService;
 
 @Service

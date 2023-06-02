@@ -5,14 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uz.tripai.dto.FeedbackDto;
-import uz.tripai.dto.ItineraryDto;
 import uz.tripai.dto.request.FeedbackRequest;
-import uz.tripai.dto.request.ItineraryRequest;
 import uz.tripai.entity.Feedback;
-import uz.tripai.entity.Itinerary;
 import uz.tripai.service.BaseService;
 import uz.tripai.service.FeedbackService;
-import uz.tripai.service.ItineraryService;
 
 @RestController
 @RequestMapping("api/feedback")

@@ -4,17 +4,11 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uz.tripai.dto.FavoritePlaceDto;
-import uz.tripai.dto.FeedbackDto;
 import uz.tripai.dto.request.FavoritePlaceRequest;
-import uz.tripai.dto.request.FeedbackRequest;
 import uz.tripai.entity.FavoritePlace;
-import uz.tripai.entity.Feedback;
 import uz.tripai.mapper.FavoritePlaceMapper;
-import uz.tripai.mapper.FeedbackMapper;
 import uz.tripai.repository.FavoritePlaceRepository;
-import uz.tripai.repository.FeedbackRepository;
 import uz.tripai.service.FavoritePlaceService;
-import uz.tripai.service.FeedbackService;
 
 @Service
 public class FavoritePlaceServiceImpl extends BaseServiceImpl<FavoritePlace, FavoritePlaceDto, FavoritePlaceRepository, FavoritePlaceMapper> implements FavoritePlaceService {
